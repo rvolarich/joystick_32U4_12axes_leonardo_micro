@@ -1,6 +1,11 @@
-#include <Joystick12ch32u4.h>
+/*
+ *    The program creates three USB joysticks on one ATmega32U4 chip each having 4 axes, 12 in total. 
+ *    It is compatible with Arduino Leonardo and Micro boards.
+ *    
+ *    Author: Robert Volaric 
+ */
 
-#define LED 13
+#include <Joystick12ch32u4.h>
 
 #define _1_A_X  A0  // _1_ X A0
 #define _1_A_Y  A1  // _1_ Y A1
@@ -65,8 +70,7 @@ void setup() {
 
 Joystick_ begin();
  
- pinMode(LED, OUTPUT);
- pinMode(_1_A_X, INPUT);
+ pinMode(_1_A_X, INPUT); // for any unused input change to pinMode(pin, INPUT_PULLUP)
  pinMode(_1_A_Y, INPUT);
  pinMode(_1_A_Z, INPUT);
  pinMode(_1_A_XR, INPUT);
@@ -86,9 +90,6 @@ void loop() {
 Joystick_ _1_(0);
 Joystick_ _2_(1);
 Joystick_ _3_(2);
-
-
-//arrayIndex = 0;
 
 
     if(initState){
